@@ -8,16 +8,7 @@ class Stack {
   }
 
   pop() {
-    if (this.isEmpty()) {
-      console.warn('Stack is EMPTY! Returning null.')
-      return null;
-    }
-
     return this.stack.pop();
-  }
-
-  peek() {
-    return this.stack[this.stack.length - 1];
   }
 
   isEmpty() {
@@ -32,11 +23,11 @@ const isValid = (input) => {
     input.split("").forEach((parenthesis) => {
       if (parenthesis === '(') {
         stack.push(parenthesis);
-      } else if (stack.peek() === '(') {
-        stack.pop()
-      } else {
-        throw Error()
+        return
       }
+
+      if (stack.pop()) return;
+      throw new Error()
     })
   } catch {
     return false;
@@ -45,9 +36,9 @@ const isValid = (input) => {
   return stack.isEmpty()
 }
 
-console.log(isValid("))(") === false);
-console.log(isValid("(()") === false);
-console.log(isValid("(()())") === true);
-console.log(isValid(")()(") === false);
-console.log(isValid("") === true);
-console.log(isValid("(((((((())))))))") === true);
+console.log(isValid("))(") === false ? "Passed" : "Failed");
+console.log(isValid("(()") === false ? "Passed" : "Failed");
+console.log(isValid("(()())") === true ? "Passed" : "Failed");
+console.log(isValid(")()(") === false ? "Passed" : "Failed");
+console.log(isValid("") === true ? "Passed" : "Failed");
+console.log(isValid("(((((((())))))))") === true ? "Passed" : "Failed");
