@@ -7,20 +7,13 @@ class Queue
   end
   
   def enqueue(value)
-    if is_full?
-      puts "Queue is FULL!, Ignoring #{value}"
-    else 
-      queue.push(value)
-    end
+    return queue.push(value) unless is_full?
+    puts "Queue is FULL!, Ignoring #{value}"
   end
 
   def dequeue
-    if is_empty?
-      puts 'Queue is EMPTY! Returning null.'
-      return nil
-    else
-      queue.shift
-    end
+    return queue.shift unless is_empty?
+    puts 'Queue is EMPTY! Returning null.'
   end
   
   def is_empty?

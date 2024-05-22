@@ -7,20 +7,13 @@ class Stack
   end
 
   def push(value)
-    if is_full?
-      puts "Stack is FULL! Ignoring #{value}."
-    else 
-      stack.push(value)
-    end
+    return stack.push(value) unless is_full?
+    puts "Stack is FULL! Ignoring #{value}."
   end
 
   def pop
-    if is_empty?
-      puts "Stack is EMPTY! Returning nil."
-      return nil
-    else
-      stack.pop
-    end
+    return stack.pop unless is_empty?
+    puts "Stack is EMPTY! Returning nil."
   end
 
   def peek
@@ -34,9 +27,7 @@ class Stack
   def is_full?
     stack.length >= max_height
   end
-
 end
-
 
 book_stack = Stack.new(5)
 
